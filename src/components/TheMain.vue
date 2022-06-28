@@ -18,8 +18,10 @@ export default {
     name: 'TheMain',
     components: {
     TheCard
+    },
+
+    
 }
-    }
 </script>
 
 <style lang="scss" scoped>
