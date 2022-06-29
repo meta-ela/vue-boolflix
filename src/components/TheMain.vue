@@ -2,7 +2,7 @@
     <div>
         <!-- div lista film -->
         <div>
-            <TheCard></TheCard>
+            <TheCard :moviesList="moviesList"></TheCard>
         </div>
 
         <!-- div lista serie -->
@@ -19,6 +19,10 @@ export default {
     components: {
     TheCard
     },
+
+    props: {
+        moviesList: Array,
+    }
 
     /* computed: {
         moviesList() {

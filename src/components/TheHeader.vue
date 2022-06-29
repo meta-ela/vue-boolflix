@@ -4,7 +4,7 @@
             <input type="text" class="form-control" placeholder="Scrivi il film da cercare" 
             v-model="inputText"
             v-on:keyup.enter="onSearchText">
-            <button class="btn btn-outline-secondary" type="button" @click="onSearchText">Cerca</button>
+            <!-- <button class="btn btn-outline-secondary" type="button" @click="onSearchText">Cerca</button> -->
         </div>
     </div>
 </template>

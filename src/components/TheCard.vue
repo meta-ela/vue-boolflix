@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <!-- <ul>
+        <ul>
             <li v-for="(movies, i) in moviesList" :key="i">
                 {{ movies.title }}
                 <ul>
@@ -9,7 +9,7 @@
                     <li>Average Vote: {{ movies.vote_average }}</li>
                 </ul>
             </li>
-        </ul> -->
+        </ul>
     </div>
 </template>
 
@@ -18,6 +18,10 @@
 
 export default {
     name: "TheCard",
+
+    props: {
+        moviesList: Array,
+    }
 
     /* computed: {
         moviesList() {

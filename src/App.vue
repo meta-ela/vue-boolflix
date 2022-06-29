@@ -2,7 +2,8 @@
   <div id="app">
     <!-- mettere l'evento in ascolto sul padre -->
     <TheHeader @searchTextChanged="onSearchTextChanged"></TheHeader>
-    <TheMain></TheMain>
+    <!-- comunicare tramite prop a cui fare passare la moviesList -->
+    <TheMain :moviesList="moviesList"></TheMain>
   </div>
 </template>
 
