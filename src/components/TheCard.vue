@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <ul>
+        <!-- <ul>
             <li v-for="(movies, i) in moviesList" :key="i">
                 {{ movies.title }}
                 <ul>
@@ -9,21 +9,21 @@
                     <li>Average Vote: {{ movies.vote_average }}</li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
     </div>
 </template>
 
 <script>
-import {state} from "../store";
+/* import {state} from "../store"; */
 
 export default {
     name: "TheCard",
 
-    computed: {
+    /* computed: {
         moviesList() {
             return state.moviesList;
         },
-    },
+    }, */
 }
 
 </script>
