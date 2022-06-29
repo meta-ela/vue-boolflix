@@ -3,6 +3,9 @@ import Vue from "vue";
 
 export const state = Vue.observable({
     moviesList: [],
+    seriesList: [],
+    // dove verrà salvato il value dell'inputText in TheHeader
+    searchText: "",
 })
 
 export function searchData(searchText) {

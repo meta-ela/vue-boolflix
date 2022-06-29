@@ -12,7 +12,7 @@
 
 <script>
 import TheCard from './TheCard.vue';
-
+/* import {state} from "../store"; */
 
 export default {
     name: 'TheMain',
@@ -20,7 +20,11 @@ export default {
     TheCard
     },
 
-    
+    /* computed: {
+        moviesList() {
+            return state.moviesList;
+        },
+    }, */
 }
 </script>
 
