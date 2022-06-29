@@ -7,7 +7,7 @@
 
         <!-- div lista serie -->
         <div>
-            <TheCard :seriesList="seriesList"></TheCard>
+            <TheCard :moviesList="seriesList"></TheCard>
         </div>
     </div>
 </template>
@@ -24,7 +24,6 @@ export default {
 
     props: {
         moviesList: Array,
-        seriesList: Array,
     }
 
     /* computed: {

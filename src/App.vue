@@ -38,14 +38,24 @@ export default {
       // dalva i dati in variabile esterna
       this.searchText = inputText;
 
-      
+      axios
+        .get("https://api.themoviedb.org/3/search/movie", {
+          params: {
+            api_key: "09bfa2d28e4a21cca1492a0a9fdc0921",
+            query: inputText,
+            language: "it-IT",
+          },
+        })
+        .then((resp) => {
+          this.moviesList = resp.data.results;
+        })
       
     },
     // chiamata axios
       /**
        * @param {"movie"|"tv"} type
        */
-      fetchData(type) {
+      /* fetchData(type) {
         axios
         .get("https://api.themoviedb.org/3/search/" + type, {
           params: {
@@ -61,8 +71,9 @@ export default {
             this.seriesList = resp.data.results;
           }
         })
-      },
+      }, */
   },
+
 }
 </script>
 
