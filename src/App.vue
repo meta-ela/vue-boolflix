@@ -25,7 +25,7 @@ export default {
 
   data () {
     return {
-      searchText: "futuro",
+      searchText: "casa",
       moviesList: [],
       seriesList: [],
     }
@@ -78,7 +78,7 @@ export default {
 
   mounted() {
       this.fetchData("movie");
-      /* this.fetchData("tv"); */
+      this.fetchData("tv");
     },
 };
 </script>

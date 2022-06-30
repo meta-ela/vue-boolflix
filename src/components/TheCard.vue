@@ -1,19 +1,29 @@
 <template>
-    <div class="row row-cols-3">
+    <div class="row row-cols-3 g-3">
         <div class="col" v-for="(movie, i) in moviesList" :key="i">
-        <img :src="cardImage(movie.poster_path)" :alt="movie.original_title"/>
-                <div>Original Title: {{ movie.original_title }}</div>
-                <div>Original Language: {{ countryFlag(movie.original_language) }} 
-                    <span class="fi " :class="'fi-' + countryFlag(movie.original_language)"></span>
-                </div>
-                <div>Average Vote: {{ voteRange(movie.vote_average) }}/5</div>
+            <div class="my_card position-relative">
                 <div>
-                    <span v-for="i in 5" :key="i">
-                        <i v-if="i <= voteRange(movie.vote_average)" class="fa-solid fa-star"></i>
-                        <i v-else class="fa-regular fa-star"></i>
-                    </span>
+                    <img class="w-100" :src="cardImage(movie.poster_path)" :alt="movie.original_title"/>
                 </div>
-                
+
+                <div class="card_overlay">
+                    <div> <strong>Original Title: </strong> {{ movieTitle(movie.original_title) }}</div>
+                    <div> <strong>Original Language: </strong> {{ countryFlag(movie.original_language) }} 
+                        <span class="fi " :class="'fi-' + countryFlag(movie.original_language)"></span>
+                    </div>
+                    <div> <strong>Average Vote:</strong>  {{ voteRange(movie.vote_average) }}/5</div>
+                    <div>
+                        <span v-for="i in 5" :key="i">
+                            <i v-if="i <= voteRange(movie.vote_average)" class="fa-solid fa-star text-warning"></i>
+                            <i v-else class="fa-regular fa-star text-warning"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <strong>Overview: </strong> {{ movieOverview(movie.overview) }}
+                    </div>
+                </div>
+            </div>
+
             
         </div>
     </div>
@@ -40,7 +50,7 @@ export default {
         },
         cardImage(image) {
             if(image) {
-                return "https://image.tmdb.org/t/p/" + "w342" + image;
+                return "https://image.tmdb.org/t/p/" + "w500" + image;
             } else {
                 return "/img/imgError.png"
             }
@@ -48,6 +58,20 @@ export default {
         },
         voteRange(vote) {
             return Math.ceil(vote / 2);
+        },
+        movieTitle(title) {
+            if(title) {
+                return title
+            } else {
+                return "movie.original_name"
+            }
+        },
+        movieOverview(overview){
+            if(overview) {
+                return overview
+            } else {
+                return "no description"
+            }
         }
     },
     computed: {

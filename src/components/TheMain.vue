@@ -10,7 +10,7 @@
 
             <!-- div lista serie -->
             <div v-if="seriesList">
-                <h2 class="text-white fw-bold">SERIE</h2>
+                <h2 class="text-white fw-bold">SERIES</h2>
                 <TheCard :moviesList="seriesList"></TheCard>
             </div>
             <div v-else class="alert bg-danger text-white text-uppercase text-center"> errore richiesta</div>
