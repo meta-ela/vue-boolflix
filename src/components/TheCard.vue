@@ -1,18 +1,22 @@
 <template>
     <div class="container">
         <ul>
-            <li v-for="(movies, i) in moviesList" :key="i">
-                {{ movies.title }}
-                <ul>
-                    <li>Original Title: {{ movies.original_title }}</li>
-                    <li>Original Language: {{ movies.original_language }} 
-                        <span class="fi " :class="'fi-' + countryFlag"></span>
-                    </li>
-                    <li>Average Vote: {{ movies.vote_average }}</li>
-                    <li>prova voto {{ voteRange }}</li>
-                    <li>prova: {{ movies.poster_path }}</li>
-                    <li>{{ cardImage }}</li>
-                </ul>
+            <li v-for="(movie, i) in moviesList" :key="i">
+                {{ movie.title }}
+                
+                    <div>Original Title: {{ movie.original_title }}</div>
+                    <div>Original Language: {{ countryFlag(movie.original_language) }} 
+                        <span class="fi " :class="'fi-' + countryFlag(movie.original_language)"></span>
+                    </div>
+                    <div>Average Vote: {{ voteRange(movie.vote_average) }}/5</div>
+                    <div>
+                        <span v-for="i in 5" :key="i">
+                            <i v-if="i <= voteRange(movie.vote_average)" class="fa-solid fa-star"></i>
+                            <i v-else class="fa-regular fa-star"></i>
+                        </span>
+                    </div>
+                    <img :src="cardImage(movie.poster_path)" :alt="movie.original_title">
+                
             </li>
         </ul>
     </div>
@@ -26,30 +30,33 @@ export default {
 
     props: {
         moviesList: Array,
-    },
-
-    computed: {
-        /* moviesList() {
-            return state.moviesList;
-        }, */
-        countryFlag () {
+    },methods:{        
+        countryFlag (lang) {
             let langsMap = {
                 "en" : "us",
                 "ja" : "jp",
             }
-
-            if(langsMap[this.moviesList.original_language]) {
-                return langsMap[this.moviesList.original_language]
+            if(langsMap[lang]) {
+                return langsMap[lang]
             }
-
-            return this.moviesList.original_language
+            return lang
         },
-        cardImage() {
-            return "https://image.tmdb.org/t/p/" + "w342" + this.moviesList.poster_path
+        cardImage(image) {
+            if(image) {
+                return "https://image.tmdb.org/t/p/" + "w342" + image;
+            } else {
+                return "/img/imgError.png"
+            }
+            
         },
-        voteRange() {
-            return Math.ceil(this.moviesList.vote_average / 2);
+        voteRange(vote) {
+            return Math.ceil(vote / 2);
         }
+    },
+    computed: {
+        /* moviesList() {
+            return state.moviesList;
+        }, */
     },
 }
 

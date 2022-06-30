@@ -1,14 +1,18 @@
 <template>
-    <div>
+    <div class="container">
         <!-- div lista film -->
-        <div>
+        <div  v-if="moviesList">
+            <h1>FILM</h1>
             <TheCard :moviesList="moviesList"></TheCard>
         </div>
+        <div v-else class="alert bg-danger text-white text-uppercase text-center"> errore richiesta</div>
 
         <!-- div lista serie -->
-        <div>
-            <!-- <TheCard :moviesList="seriesList"></TheCard> -->
+        <div  v-if="seriesList">
+            <h1>SERIE</h1>
+            <TheCard :moviesList="seriesList"></TheCard>
         </div>
+        <div v-else class="alert bg-danger text-white text-uppercase text-center"> errore richiesta</div>
     </div>
 </template>
 
@@ -24,6 +28,7 @@ export default {
 
     props: {
         moviesList: Array,
+        seriesList: Array,
     }
 
     /* computed: {

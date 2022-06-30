@@ -25,21 +25,20 @@ export default {
 
   data () {
     return {
-      searchText: "",
+      searchText: "futuro",
       moviesList: [],
       seriesList: [],
-      /* type: ["movie", "tv"] */
     }
   },
 
   methods: {
     // inputText => dati che riceve dall'utente, collegamento v-model
     onSearchTextChanged(inputText) {
-      // dalva i dati in variabile esterna
+      // salva i dati in variabile esterna
       this.searchText = inputText;
 
       // chiamata axios
-      axios
+    /*  axios
         .get("https://api.themoviedb.org/3/search/movie", {
           params: {
             api_key: "09bfa2d28e4a21cca1492a0a9fdc0921",
@@ -50,56 +49,37 @@ export default {
         .then((resp) => {
           this.moviesList = resp.data.results;
         })
-      
-      // chiamata axios
-      /* axios
-        .get("https://api.themoviedb.org/3/search/" + this.type, {
-          params: {
-            api_key: "09bfa2d28e4a21cca1492a0a9fdc0921",
-            query: inputText,
-            language: "it-IT",
-          },
-        })
-        .then((resp) => {
-          if(this.type === "movie") {
-            this.moviesList = resp.data.results;
-          } else if(this.type === "tv") {
-            this.seriesList = resp.data.results;
-          }
-        }) */ 
-      
+       */
     },
-
 
     // chiamata axios
     /**
      * 
      * @param {"movie"|"tv"} type 
      */
-    /* fetchData(type) {
+    fetchData(type) {
       axios
       .get("https://api.themoviedb.org/3/search/" + type, {
         params: {
           api_key: "09bfa2d28e4a21cca1492a0a9fdc0921",
-          query: this.inputText,
+          query: this.searchText,
           language: "it-IT",
         },
       })
       .then((resp) => {
         if(type === "movie") {
           this.moviesList = resp.data.results;
-        } else if(type === "tv") {
+        } else {
           this.seriesList = resp.data.results;
         }
       })
-    }, */
-    
-    /* mounted() {
-      this.fetchData("movie");
-      this.fetchData("tv");
-    }, */
+    },
   },
 
+  mounted() {
+      this.fetchData("movie");
+      this.fetchData("tv");
+    },
 };
 </script>
 
