@@ -7,7 +7,7 @@
 
         <!-- div lista serie -->
         <div>
-            <TheCard :moviesList="seriesList"></TheCard>
+            <!-- <TheCard :moviesList="seriesList"></TheCard> -->
         </div>
     </div>
 </template>
