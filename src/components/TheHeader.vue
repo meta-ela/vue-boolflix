@@ -32,8 +32,10 @@ export default {
         onSearchText() {
             // emit deve arrivare al padre App.vue
             this.$emit("searchTextChanged", this.inputText)
-        }
+        },
     },
+
+    
 }
 
 </script>

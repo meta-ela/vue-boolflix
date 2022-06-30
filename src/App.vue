@@ -25,7 +25,7 @@ export default {
 
   data () {
     return {
-      searchText: "casa",
+      searchText: "",
       moviesList: [],
       seriesList: [],
     }
@@ -38,7 +38,7 @@ export default {
       this.searchText = inputText;
 
       // chiamata axios
-    /*  axios
+      /* axios
         .get("https://api.themoviedb.org/3/search/movie", {
           params: {
             api_key: "09bfa2d28e4a21cca1492a0a9fdc0921",
@@ -76,10 +76,12 @@ export default {
     },
   },
 
-  mounted() {
-      this.fetchData("movie");
-      this.fetchData("tv");
-    },
+    watch: {
+      searchText() {
+        this.fetchData("movie");
+        this.fetchData("tv");
+      }
+    }
 };
 </script>
 
