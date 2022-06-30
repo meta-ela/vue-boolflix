@@ -78,7 +78,7 @@ export default {
 
   mounted() {
       this.fetchData("movie");
-      this.fetchData("tv");
+      /* this.fetchData("tv"); */
     },
 };
 </script>

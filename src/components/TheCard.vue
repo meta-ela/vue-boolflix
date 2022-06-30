@@ -1,24 +1,21 @@
 <template>
-    <div class="container">
-        <ul>
-            <li v-for="(movie, i) in moviesList" :key="i">
-                {{ movie.title }}
+    <div class="row row-cols-3">
+        <div class="col" v-for="(movie, i) in moviesList" :key="i">
+        <img :src="cardImage(movie.poster_path)" :alt="movie.original_title"/>
+                <div>Original Title: {{ movie.original_title }}</div>
+                <div>Original Language: {{ countryFlag(movie.original_language) }} 
+                    <span class="fi " :class="'fi-' + countryFlag(movie.original_language)"></span>
+                </div>
+                <div>Average Vote: {{ voteRange(movie.vote_average) }}/5</div>
+                <div>
+                    <span v-for="i in 5" :key="i">
+                        <i v-if="i <= voteRange(movie.vote_average)" class="fa-solid fa-star"></i>
+                        <i v-else class="fa-regular fa-star"></i>
+                    </span>
+                </div>
                 
-                    <div>Original Title: {{ movie.original_title }}</div>
-                    <div>Original Language: {{ countryFlag(movie.original_language) }} 
-                        <span class="fi " :class="'fi-' + countryFlag(movie.original_language)"></span>
-                    </div>
-                    <div>Average Vote: {{ voteRange(movie.vote_average) }}/5</div>
-                    <div>
-                        <span v-for="i in 5" :key="i">
-                            <i v-if="i <= voteRange(movie.vote_average)" class="fa-solid fa-star"></i>
-                            <i v-else class="fa-regular fa-star"></i>
-                        </span>
-                    </div>
-                    <img :src="cardImage(movie.poster_path)" :alt="movie.original_title">
-                
-            </li>
-        </ul>
+            
+        </div>
     </div>
 </template>
 
